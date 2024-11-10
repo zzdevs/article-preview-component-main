@@ -36,16 +36,20 @@ body {
   font-family: 'Manrope Variable';
   font-weight: 500;
   place-self: center;
-  max-width: 320px;
+  max-width: 310px;
   height: 480px;
   background-color: white;
   border-radius: 1rem;
   overflow: hidden;
   display: grid;
   grid-template-rows: 40% 45% 15%;
+  grid-template-areas: 'image' 'text' 'user';
+  cursor: default;
+  box-shadow: 0px 6px 12px hsl(212, 23%, 69%);
 }
 
 .card .mainImage {
+  grid-area: image;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -53,11 +57,11 @@ body {
 }
 
 .card .textContent {
-  padding: 3rem 0;
+  grid-area: text;
+  padding: 3rem 2rem;
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
-  background-color: aqua;
 }
 
 .card .textContent .bold {
@@ -71,11 +75,12 @@ body {
 }
 
 .card .user {
+  grid-area: user;
   display: grid;
   grid-template-columns: 20% 1fr 20%;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1rem;
 }
 .card .user .avatar {
   height: 80%;
@@ -83,10 +88,6 @@ body {
   object-fit: contain;
   border-radius: 50%;
   margin: auto;
-}
-
-.card .user .userData {
-  background-color: blue;
 }
 
 .card .user .userData .name {
@@ -100,18 +101,47 @@ body {
 
 .icon {
   height: 70%;
-  padding: 0.8rem;
   background-color: hsl(210, 46%, 95%);
-  border-radius: 50%;
   transition: 0.3s ease;
   margin: auto;
+  cursor: pointer;
 }
 
-.icon:hover {
-  background-color: hsl(212, 23%, 69%);
-  fill: red;
+.icon.share {
+  background-color: hsl(210, 46%, 95%);
+  border-radius: 55%;
+  padding: 0.5rem;
+  height: 60%;
+  transition: all 0.1s ease;
+}
+.icon.share:hover {
+  background-color: hsl(212, 23%, 80%);
+}
+
+.icon.link {
+  background-color: transparent;
 }
 
 .shareOptions {
+  background-color: hsl(217, 19%, 35%);
+  grid-area: user;
+  display: flex;
+  padding: 1rem 2rem;
+  align-items: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: hsl(212, 23%, 69%);
   display: none;
+}
+.shareOptions .options {
+  width: 100%;
+}
+.icon.link {
+  padding: 0 0.5rem;
+}
+
+@media (width > 600px) {
+  .card {
+  }
 }
