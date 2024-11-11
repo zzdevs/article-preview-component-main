@@ -76,11 +76,9 @@ body {
 
 .card .user {
   grid-area: user;
-  display: grid;
-  grid-template-columns: 20% 1fr 20%;
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 .card .user .avatar {
   height: 80%;
@@ -90,6 +88,10 @@ body {
   margin: auto;
 }
 
+.card .user .userData {
+  width: 100%;
+  padding: 0 0.5rem;
+}
 .card .user .userData .name {
   font-weight: 700;
   color: hsl(217, 19%, 35%);
@@ -128,20 +130,67 @@ body {
   display: flex;
   padding: 1rem 2rem;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   color: hsl(212, 23%, 69%);
   display: none;
 }
+
 .shareOptions .options {
   width: 100%;
 }
 .icon.link {
   padding: 0 0.5rem;
 }
+.visible {
+  display: flex;
+}
 
-@media (width > 600px) {
+@media (width > 800px) {
   .card {
+    position: relative;
+    padding: 0;
+    min-width: 700px;
+    height: 280px;
+    grid-template-rows: 75% 25%;
+    grid-template-columns: 40% 60%;
+    grid-template-areas: 'image text' 'image user';
+    overflow: visible;
+  }
+  .card .mainImage {
+    border-radius: 1rem 0 0 1rem;
+    object-fit: cover;
+    height: 100%;
+  }
+  .card .textContent {
+    padding: 3rem;
+  }
+  .card .textContent .bold {
+    font-size: 1.5rem;
+  }
+  .card .user {
+    padding: 1rem 3rem;
+  }
+  .shareOptions {
+    position: absolute;
+    border-radius: 0.5rem;
+    right: 0;
+    bottom: 0;
+    margin: 5rem -3rem;
+  }
+  .shareOptions .icon.share {
+    display: none;
+  }
+  .shareOptions::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-top: 1rem solid hsl(217, 19%, 35%);
+    right: 38%;
+    bottom: -23%;
   }
 }
